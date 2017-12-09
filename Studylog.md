@@ -19,11 +19,12 @@ isinstance(names,datatype)
 ### print()输出内容
 
 ```python
-print(内容, end='')
+print(内容, end='', file=fileObjectName)
 #end=''关闭在输入中自动包含换行（默认会在输入末尾插入换行符，关了就没啦）
+#file= 文件对象名称(默认输出到屏幕)
 ```
 
-### split()
+### split()分割数据
 
 ```python
 split('spliter',number)#返回number+1个数组
@@ -32,6 +33,34 @@ for each_line in file:
 #spliter为分隔依据，如果一行有和number数目不一样的spliter数，从左向右优先级降低
 #number为1的时候分两段
 ```
+
+### open()打开文件（转换为文件对象）
+
+```python
+fileObject = open("file.txt","w") #返回文件对象，按行保存数据
+#参数1 为文件名字符串
+#参数2 （1）"w"以写的方式访问,"wb"二进制模式访问（2）"r"以读的方式访问，"wr"二进制模式访问
+```
+
+### help()获取help
+
+```python
+查看python所有的modules：help("modules")
+
+单看python所有的modules中包含指定字符串的modules： help("modules yourstr")
+
+查看python中常见的topics： help("topics")
+
+查看python标准库中的module：import os.path + help("os.path")
+
+查看python内置的类型：help("list")
+
+查看python类型的成员方法：help("str.find") 
+
+查看python内置函数：help("open")
+```
+
+
 
 
 
@@ -43,9 +72,16 @@ for each_line in file:
 pass 
 ```
 
+------
+
+## fragmented 
+
+- Python中字符串一旦创建就不可变，想要改变只能自身赋值替换。python变量只是引用，数据对象才包含数据。
 
 
 
+
+-----
 
 
 ## Chapter1
@@ -157,15 +193,30 @@ print_lol(cast)  #当前空间的所有print_lol都是nester下的
 
 异常出现时，控制台会有一个traceback
 
-####用try/except机制处理
+####用try/except/finally机制处理
 
 ```python
 try:
     code might crush
 except:
     recovery
-   
+finally:
+    file.close()
+#执行顺序 try -> except -> finally
 ```
+
+#### 用try with open/except处理
+
+       ```python
+try:
+    with open("file_name1","r") as inputFile1, open("file_name2","r") as inputFile2:
+    #用with处理会自动关闭文件流
+        for e_l in inputFile:
+            ......
+except IOError as err:
+    prin("File error:" + str(err))
+
+       ```
 
 
 
