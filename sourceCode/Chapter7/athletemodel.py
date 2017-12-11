@@ -2,7 +2,6 @@ import sys
 sys.path.append(r"C:\Users\han1\PycharmProjects\HeadFirstPython\AthleteList")
 from AthleteList import AthleteList
 import pickle
-
 def getdata(filename):
     try:
         with open(filename) as f:

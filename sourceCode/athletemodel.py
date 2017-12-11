@@ -21,8 +21,8 @@ def put_to_store(file_list):
         ath = getdata(t)
         all_athletes[ath.name] = ath
     try:
-        with open("athletes.pickle","wb") as athf:
-            pickle.dump(all_athletes,athf)
+        with open("athletes.pickle", "wb") as athf:
+            pickle.dump(all_athletes, athf)
     except IOError as err:
         print("IO error(get_from_store)" + str(err))
     return all_athletes

@@ -1,0 +1,45 @@
+def sanitize(time_string):
+    if '-' in time_string:
+        splitter = '-'
+    elif ':' in time_string:
+        splitter = ':'
+    else:
+        return time_string
+    (mi, secs) = time_string.split(splitter)
+    return mi + '.' + secs
+
+
+class Athlete:
+    def __init__(self, a_name, a_dob=None, a_speed=[]):
+        self.Name = a_name
+        self.Dob = a_dob
+        self.Speed = a_speed
+
+    def top3(self):
+        return sorted(set([sanitize(t) for t in self.Speed]))[0:3]
+
+
+# 读取选手数据文件，返回Athlete对象,dic或者list
+def getdata(filename, swtr=0):
+    try:
+        with open(filename) as f:
+            data = f.readline()
+        data_list = data.strip().split(',')
+        keys = ['Name', 'Dob', 'Speed']
+        values = []
+        for t in range(2):
+            values.append(data_list.pop(0))
+        values.append(data_list)
+        data_dic = dict.fromkeys(keys, values)
+        if swtr == 0:
+            return Athlete(values[0], values[1], values[2])
+        elif swtr == 'dic':
+            return data_dic
+        else:
+            return data_list
+    except IOError:
+        print('datafile is missing')
+
+
+a = getdata(r"c:\Users\han1\Documents\GitHub\pythonStudy\sourceCode\Chapter6\dataFile\julie2.txt")
+print(type(a))
