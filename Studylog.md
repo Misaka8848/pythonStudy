@@ -475,7 +475,7 @@ KeyError: 'Alice'
 
 向字典添加新内容的方法是增加新的键/值对，修改或删除已有键/值对如下实例:
 
-```
+```python
 #!/usr/bin/python3
 
 dict = {'Name': 'Runoob', 'Age': 7, 'Class': 'First'}
@@ -490,7 +490,7 @@ print ("dict['School']: ", dict['School'])
 
 以上实例输出结果：
 
-```
+```python
 dict['Age']:  8
 dict['School']:  菜鸟教程
 ```
@@ -503,7 +503,7 @@ dict['School']:  菜鸟教程
 
 显示删除一个字典用del命令，如下实例：
 
-```
+```python
 #!/usr/bin/python3
 
 dict = {'Name': 'Runoob', 'Age': 7, 'Class': 'First'}
@@ -518,7 +518,7 @@ print ("dict['School']: ", dict['School'])
 
 但这会引发一个异常，因为用执行 del 操作后字典不再存在：
 
-```
+```python
 Traceback (most recent call last):
   File "test.py", line 9, in <module>
     print ("dict['Age']: ", dict['Age'])
@@ -599,5 +599,27 @@ Python字典包含了以下内置方法：
 
 
 
-##
+##类和类的继承
+
+#### [Python3 面向对象](http://www.runoob.com/python3/python3-class.html)
+
+```python
+# 创建自己的数据结构
+class myStructure:
+    def __init__(self, a_Attribute1=0, a_Attibute2=[]):
+        self.Attribute1 = a_Attribute1
+        self.Attribute2 = a_Attribute2
+    
+    def method1(para1=0, para2=[]):
+        ......
+    # operating on self.Attribute by code.
+    # Just like a functon.
+
+    
+    
+# inherit
+class MyList(list):
+	def __init__(self,):
+        list.__init__([]) #list == self
+```
 
